@@ -1,8 +1,9 @@
-package com.example.mobileappdevelopmentvar2
+package com.example.mobileappdevelopmentvar2.viewModel
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.mobileappdevelopmentvar2.RetrofitClient
 import kotlinx.coroutines.launch
 
 class RecipeViewModel: ViewModel() {
@@ -21,7 +22,7 @@ class RecipeViewModel: ViewModel() {
                     )
                 }
             } catch (e: Exception) {
-                Log.e("RetrofitError", "Ошибка при запросе: ${e.message}")
+                Log.e("RetrofitError", e.message.toString())
             }
         }
     }

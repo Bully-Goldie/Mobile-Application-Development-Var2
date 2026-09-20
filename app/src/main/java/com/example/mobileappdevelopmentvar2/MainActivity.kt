@@ -1,6 +1,7 @@
 package com.example.mobileappdevelopmentvar2
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -14,6 +15,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.mobileappdevelopmentvar2.ui.theme.MobileAppDevelopmentVar2Theme
+import com.example.mobileappdevelopmentvar2.viewModel.RecipeViewModel
+import com.example.mobileappdevelopmentvar2.viewModel.UserViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,11 +24,33 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MobileAppDevelopmentVar2Theme {
-                val postViewModel: RecipeViewModel = viewModel()
+                val recipeViewModel: RecipeViewModel = viewModel()
 
                 LaunchedEffect(Unit) {
-                    postViewModel.fetchRecipe()
+                    recipeViewModel.fetchRecipe()
                 }
+
+                val userViewModel: UserViewModel = viewModel()
+
+                LaunchedEffect(Unit) {
+                    userViewModel.addUser(
+                        firstName = "Ирина",
+                        lastName = "Воронова",
+                        age = 29,
+                        hairColor = "Темные",
+                        hairType = "Кудрявые"
+                    ) { user ->
+                        Log.d(
+                            "UserLog",
+                            "ID: ${user.id} | " +
+                                    "Имя: ${user.firstName} | " +
+                                    "Фамилия: ${user.lastName} | " +
+                                    "Возраст: ${user.age} | " +
+                                    "Волосы: ${user.hair.color}, ${user.hair.type}"
+                        )
+                    }
+                }
+
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
                         name = "Android",
