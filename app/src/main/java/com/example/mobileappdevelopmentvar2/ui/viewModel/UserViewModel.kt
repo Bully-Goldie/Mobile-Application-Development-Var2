@@ -1,11 +1,10 @@
-package com.example.mobileappdevelopmentvar2.viewModel
+package com.example.mobileappdevelopmentvar2.ui.viewModel
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.mobileappdevelopmentvar2.Model.User
-import com.example.mobileappdevelopmentvar2.Model.UserHair
-import com.example.mobileappdevelopmentvar2.RetrofitClient
+import com.example.mobileappdevelopmentvar2.data.RetrofitClient
+import com.example.mobileappdevelopmentvar2.data.model.User
 import kotlinx.coroutines.launch
 
 class UserViewModel: ViewModel() {

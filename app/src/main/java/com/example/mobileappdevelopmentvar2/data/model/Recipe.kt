@@ -1,6 +1,6 @@
-package com.example.mobileappdevelopmentvar2.Model
+package com.example.mobileappdevelopmentvar2.data.model
 
-data class Recipes(
+data class Recipe(
     val id: Int,
     val name: String,
     val cookTimeMinutes: Int,

@@ -1,7 +1,6 @@
 package com.example.mobileappdevelopmentvar2
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -14,11 +13,11 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.mobileappdevelopmentvar2.Model.User
-import com.example.mobileappdevelopmentvar2.Model.UserHair
+import com.example.mobileappdevelopmentvar2.data.model.User
+import com.example.mobileappdevelopmentvar2.data.model.UserHair
 import com.example.mobileappdevelopmentvar2.ui.theme.MobileAppDevelopmentVar2Theme
-import com.example.mobileappdevelopmentvar2.viewModel.RecipeViewModel
-import com.example.mobileappdevelopmentvar2.viewModel.UserViewModel
+import com.example.mobileappdevelopmentvar2.ui.viewModel.RecipeViewModel
+import com.example.mobileappdevelopmentvar2.ui.viewModel.UserViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

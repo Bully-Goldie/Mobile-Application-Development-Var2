@@ -1,8 +1,7 @@
-package com.example.mobileappdevelopmentvar2
+package com.example.mobileappdevelopmentvar2.data
 
-import com.example.mobileappdevelopmentvar2.Model.RecipeResponse
-import com.example.mobileappdevelopmentvar2.Model.User
-import okhttp3.Response
+import com.example.mobileappdevelopmentvar2.data.model.RecipeResponse
+import com.example.mobileappdevelopmentvar2.data.model.User
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST

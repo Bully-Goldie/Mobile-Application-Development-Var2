@@ -1,4 +1,4 @@
-package com.example.mobileappdevelopmentvar2.Model
+package com.example.mobileappdevelopmentvar2.data.model
 
 data class User(
     val id: Int? = null,
