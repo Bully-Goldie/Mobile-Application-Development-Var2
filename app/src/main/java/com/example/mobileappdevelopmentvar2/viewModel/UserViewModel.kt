@@ -9,29 +9,19 @@ import com.example.mobileappdevelopmentvar2.RetrofitClient
 import kotlinx.coroutines.launch
 
 class UserViewModel: ViewModel() {
-    fun addUser(
-        firstName: String,
-        lastName: String,
-        age: Int,
-        hairColor: String,
-        hairType: String,
-        onResult: (User) -> Unit
-    ) {
+    fun addUser(user: User) {
         viewModelScope.launch {
             try {
-                val user = User(
-                    firstName = firstName,
-                    lastName = lastName,
-                    age = age,
-                    hair = UserHair(
-                        color = hairColor,
-                        type = hairType
-                    )
-                )
-
                 val response = RetrofitClient.apiService.createUser(user)
 
-                onResult(response)
+                Log.d(
+                    "UserLog",
+                    "ID: ${response.id} | " +
+                            "Имя: ${response.firstName} | " +
+                            "Фамилия: ${response.lastName} | " +
+                            "Возраст: ${response.age} | " +
+                            "Волосы: ${response.hair.color}, ${response.hair.type}"
+                )
 
             } catch (e: Exception) {
                 Log.e("RetrofitError", e.message.toString())

@@ -14,6 +14,8 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.mobileappdevelopmentvar2.Model.User
+import com.example.mobileappdevelopmentvar2.Model.UserHair
 import com.example.mobileappdevelopmentvar2.ui.theme.MobileAppDevelopmentVar2Theme
 import com.example.mobileappdevelopmentvar2.viewModel.RecipeViewModel
 import com.example.mobileappdevelopmentvar2.viewModel.UserViewModel
@@ -32,23 +34,20 @@ class MainActivity : ComponentActivity() {
 
                 val userViewModel: UserViewModel = viewModel()
 
+                val userHair = UserHair(
+                    color = "Темные",
+                    type = "Кудрявые"
+                )
+
+                val user = User(
+                    firstName = "Ирина",
+                    lastName = "Воронова",
+                    age = 29,
+                    hair = userHair
+                )
+
                 LaunchedEffect(Unit) {
-                    userViewModel.addUser(
-                        firstName = "Ирина",
-                        lastName = "Воронова",
-                        age = 29,
-                        hairColor = "Темные",
-                        hairType = "Кудрявые"
-                    ) { user ->
-                        Log.d(
-                            "UserLog",
-                            "ID: ${user.id} | " +
-                                    "Имя: ${user.firstName} | " +
-                                    "Фамилия: ${user.lastName} | " +
-                                    "Возраст: ${user.age} | " +
-                                    "Волосы: ${user.hair.color}, ${user.hair.type}"
-                        )
-                    }
+                    userViewModel.addUser(user)
                 }
 
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
