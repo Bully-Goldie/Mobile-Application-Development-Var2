@@ -1,9 +1,13 @@
 package com.example.mobileappdevelopmentvar2.data
 
+import com.example.mobileappdevelopmentvar2.data.service.PostsApiService
+import com.example.mobileappdevelopmentvar2.data.service.RecipesApiService
+import com.example.mobileappdevelopmentvar2.data.service.UsersApiService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
 import java.net.InetSocketAddress
 import java.net.Proxy
 
@@ -24,8 +28,17 @@ object RetrofitClient {
         .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
-    val apiService: ApiService by lazy {
+    val recipesApiService: RecipesApiService by lazy {
         retrofitClient
-            .create(ApiService::class.java)
+            .create(RecipesApiService::class.java)
+    }
+    val usersApiService: UsersApiService by lazy {
+        retrofitClient
+            .create(UsersApiService::class.java)
+    }
+
+    val postsApiService: PostsApiService by lazy {
+        retrofitClient
+            .create(PostsApiService::class.java)
     }
 }

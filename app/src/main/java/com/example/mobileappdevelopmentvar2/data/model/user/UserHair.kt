@@ -1,4 +1,4 @@
-package com.example.mobileappdevelopmentvar2.data.model
+package com.example.mobileappdevelopmentvar2.data.model.user
 
 data class UserHair(
     val color: String,

@@ -13,9 +13,11 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.mobileappdevelopmentvar2.data.model.User
-import com.example.mobileappdevelopmentvar2.data.model.UserHair
+import com.example.mobileappdevelopmentvar2.data.model.post.Post
+import com.example.mobileappdevelopmentvar2.data.model.user.User
+import com.example.mobileappdevelopmentvar2.data.model.user.UserHair
 import com.example.mobileappdevelopmentvar2.ui.theme.MobileAppDevelopmentVar2Theme
+import com.example.mobileappdevelopmentvar2.ui.viewModel.PostViewModel
 import com.example.mobileappdevelopmentvar2.ui.viewModel.RecipeViewModel
 import com.example.mobileappdevelopmentvar2.ui.viewModel.UserViewModel
 
@@ -25,28 +27,45 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MobileAppDevelopmentVar2Theme {
-                val recipeViewModel: RecipeViewModel = viewModel()
+//                val recipeViewModel: RecipeViewModel = viewModel()
+//
+//                LaunchedEffect(Unit) {
+//                    recipeViewModel.fetchRecipe()
+//                }
+//
+//                val userViewModel: UserViewModel = viewModel()
+//
+//                val userHair = UserHair(
+//                    color = "Темные",
+//                    type = "Кудрявые"
+//                )
+//
+//                val user = User(
+//                    firstName = "Ирина",
+//                    lastName = "Воронова",
+//                    age = 29,
+//                    hair = userHair
+//                )
+//
+//                LaunchedEffect(Unit) {
+//                    userViewModel.addUser(user)
+//                }
+
+                val postViewModel: PostViewModel = viewModel()
 
                 LaunchedEffect(Unit) {
-                    recipeViewModel.fetchRecipe()
+                    postViewModel.getPost()
                 }
 
-                val userViewModel: UserViewModel = viewModel()
-
-                val userHair = UserHair(
-                    color = "Темные",
-                    type = "Кудрявые"
-                )
-
-                val user = User(
-                    firstName = "Ирина",
-                    lastName = "Воронова",
-                    age = 29,
-                    hair = userHair
+                val post = Post(
+                    title = "Уют в каждой детали: встречайте нашу новинку!",
+                    body = "Мы знаем, как важно возвращаться туда, где тепло и спокойно. Наша новая коллекция ароматических свечей из соевого воска создана именно для таких моментов.",
+                    tags = listOf("декор дома", "уют в доме", "аромасвечи, подарок девушке", "ручная работа", "новинка"),
+                    views = 0
                 )
 
                 LaunchedEffect(Unit) {
-                    userViewModel.addUser(user)
+                    postViewModel.updatePost(post)
                 }
 
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->

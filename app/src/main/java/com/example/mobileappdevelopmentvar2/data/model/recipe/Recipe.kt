@@ -1,4 +1,4 @@
-package com.example.mobileappdevelopmentvar2.data.model
+package com.example.mobileappdevelopmentvar2.data.model.recipe
 
 data class Recipe(
     val id: Int,
