@@ -2,6 +2,7 @@ package com.example.mobileappdevelopmentvar2.data
 
 import com.example.mobileappdevelopmentvar2.data.service.PostsApiService
 import com.example.mobileappdevelopmentvar2.data.service.RecipesApiService
+import com.example.mobileappdevelopmentvar2.data.service.TodoApiService
 import com.example.mobileappdevelopmentvar2.data.service.UsersApiService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -40,5 +41,10 @@ object RetrofitClient {
     val postsApiService: PostsApiService by lazy {
         retrofitClient
             .create(PostsApiService::class.java)
+    }
+
+    val todoApiService: TodoApiService by lazy {
+        retrofitClient
+            .create(TodoApiService::class.java)
     }
 }

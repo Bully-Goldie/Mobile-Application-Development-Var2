@@ -19,6 +19,7 @@ import com.example.mobileappdevelopmentvar2.data.model.user.UserHair
 import com.example.mobileappdevelopmentvar2.ui.theme.MobileAppDevelopmentVar2Theme
 import com.example.mobileappdevelopmentvar2.ui.viewModel.PostViewModel
 import com.example.mobileappdevelopmentvar2.ui.viewModel.RecipeViewModel
+import com.example.mobileappdevelopmentvar2.ui.viewModel.TodoViewModel
 import com.example.mobileappdevelopmentvar2.ui.viewModel.UserViewModel
 
 class MainActivity : ComponentActivity() {
@@ -50,11 +51,16 @@ class MainActivity : ComponentActivity() {
 //                LaunchedEffect(Unit) {
 //                    userViewModel.addUser(user)
 //                }
+//
+//                val postViewModel: PostViewModel = viewModel()
+//
+//                LaunchedEffect(Unit) {
+//                    postViewModel.updatePost()
+//                }
 
-                val postViewModel: PostViewModel = viewModel()
-
+                val todoViewModel: TodoViewModel = viewModel()
                 LaunchedEffect(Unit) {
-                    postViewModel.updatePost()
+                    todoViewModel.fetchTodo()
                 }
 
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
