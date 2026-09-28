@@ -4,11 +4,11 @@ import com.example.mobileappdevelopmentvar2.data.service.PostsApiService
 import com.example.mobileappdevelopmentvar2.data.service.RecipesApiService
 import com.example.mobileappdevelopmentvar2.data.service.TodoApiService
 import com.example.mobileappdevelopmentvar2.data.service.UsersApiService
+import com.example.mobileappdevelopmentvar2.ui.viewModel.ProductViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 import java.net.InetSocketAddress
 import java.net.Proxy
 
@@ -46,5 +46,10 @@ object RetrofitClient {
     val todoApiService: TodoApiService by lazy {
         retrofitClient
             .create(TodoApiService::class.java)
+    }
+
+    val productViewModel: ProductViewModel by lazy {
+        retrofitClient
+            .create(ProductViewModel::class.java)
     }
 }
