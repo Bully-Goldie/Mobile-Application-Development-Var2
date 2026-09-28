@@ -1,6 +1,7 @@
 package com.example.mobileappdevelopmentvar2.data
 
 import com.example.mobileappdevelopmentvar2.data.service.PostsApiService
+import com.example.mobileappdevelopmentvar2.data.service.ProductsApiService
 import com.example.mobileappdevelopmentvar2.data.service.RecipesApiService
 import com.example.mobileappdevelopmentvar2.data.service.TodoApiService
 import com.example.mobileappdevelopmentvar2.data.service.UsersApiService
@@ -48,8 +49,8 @@ object RetrofitClient {
             .create(TodoApiService::class.java)
     }
 
-    val productViewModel: ProductViewModel by lazy {
+    val productViewModel: ProductsApiService by lazy {
         retrofitClient
-            .create(ProductViewModel::class.java)
+            .create(ProductsApiService::class.java)
     }
 }

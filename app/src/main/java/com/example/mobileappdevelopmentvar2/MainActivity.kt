@@ -16,8 +16,10 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.mobileappdevelopmentvar2.data.model.post.Post
 import com.example.mobileappdevelopmentvar2.data.model.user.User
 import com.example.mobileappdevelopmentvar2.data.model.user.UserHair
+import com.example.mobileappdevelopmentvar2.ui.features.home.ScreenHome
 import com.example.mobileappdevelopmentvar2.ui.theme.MobileAppDevelopmentVar2Theme
 import com.example.mobileappdevelopmentvar2.ui.viewModel.PostViewModel
+import com.example.mobileappdevelopmentvar2.ui.viewModel.ProductViewModel
 import com.example.mobileappdevelopmentvar2.ui.viewModel.RecipeViewModel
 import com.example.mobileappdevelopmentvar2.ui.viewModel.TodoViewModel
 import com.example.mobileappdevelopmentvar2.ui.viewModel.UserViewModel
@@ -62,11 +64,16 @@ class MainActivity : ComponentActivity() {
 //                LaunchedEffect(Unit) {
 //                    todoViewModel.deleteTodo()
 //                }
+                val productViewModel: ProductViewModel = viewModel()
+
+                LaunchedEffect(Unit) {
+                    productViewModel.fetchProduct()
+                }
 
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
+                    ScreenHome(
+                        modifier = Modifier.padding(innerPadding),
+                        products = productViewModel.productsState
                     )
                 }
             }

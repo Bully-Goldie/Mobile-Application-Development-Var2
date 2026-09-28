@@ -16,7 +16,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.mobileappdevelopmentvar2.R
@@ -24,14 +23,14 @@ import com.example.mobileappdevelopmentvar2.ui.theme.nameProductColor
 import com.example.mobileappdevelopmentvar2.ui.theme.priceProductColor
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import com.example.mobileappdevelopmentvar2.data.model.product.Product
 
 
 @Composable
 fun ProductCard(
     modifier: Modifier = Modifier,
-    nameProduct: String,
-    priceProduct: Double,
-    clickBasket: () -> Unit
+    clickBasket: () -> Unit,
+    product: Product
 ) {
     Box(
         modifier = modifier
@@ -69,7 +68,7 @@ fun ProductCard(
                 .padding(start = 4.dp, bottom = 8.dp, end = 4.dp)
         ) {
             Text(
-                text = nameProduct,
+                text = product.title,
                 fontSize = 14.sp,
                 color = nameProductColor,
                 fontWeight = FontWeight.W400,
@@ -80,7 +79,7 @@ fun ProductCard(
             Spacer(modifier = Modifier.height(4.dp))
 
             Text(
-                text = "$ ${String.format("%.2f", priceProduct)}",
+                text = "$ ${String.format("%.2f", product.price)}",
                 fontSize = 14.sp,
                 color = priceProductColor,
                 fontWeight = FontWeight.W700,
@@ -89,10 +88,4 @@ fun ProductCard(
             )
         }
     }
-}
-
-@Preview
-@Composable
-private fun PrevProductCard() {
-    ProductCard(nameProduct = "Black Simple Lamp", priceProduct = 12.00, clickBasket = {})
 }
