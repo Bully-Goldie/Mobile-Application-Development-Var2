@@ -58,10 +58,10 @@ class MainActivity : ComponentActivity() {
 //                    postViewModel.updatePost()
 //                }
 
-                val todoViewModel: TodoViewModel = viewModel()
-                LaunchedEffect(Unit) {
-                    todoViewModel.fetchTodo()
-                }
+//                val todoViewModel: TodoViewModel = viewModel()
+//                LaunchedEffect(Unit) {
+//                    todoViewModel.deleteTodo()
+//                }
 
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(

@@ -7,7 +7,7 @@ import com.example.mobileappdevelopmentvar2.data.RetrofitClient
 import kotlinx.coroutines.launch
 
 class TodoViewModel: ViewModel() {
-    fun fetchTodo() {
+    fun deleteTodo() {
         viewModelScope.launch {
             val  id = 27
 
