@@ -5,5 +5,6 @@ data class User(
     val firstName: String,
     val lastName: String,
     val age: Int,
-    val hair: UserHair
+    val hair: UserHair,
+    val accessToken: String? = null
 )

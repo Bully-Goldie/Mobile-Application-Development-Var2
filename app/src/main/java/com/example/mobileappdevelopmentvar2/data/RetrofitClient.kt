@@ -1,15 +1,18 @@
 package com.example.mobileappdevelopmentvar2.data
 
+import com.example.mobileappdevelopmentvar2.data.service.AuthApiService
 import com.example.mobileappdevelopmentvar2.data.service.PostsApiService
 import com.example.mobileappdevelopmentvar2.data.service.ProductsApiService
 import com.example.mobileappdevelopmentvar2.data.service.RecipesApiService
 import com.example.mobileappdevelopmentvar2.data.service.TodoApiService
 import com.example.mobileappdevelopmentvar2.data.service.UsersApiService
+import com.example.mobileappdevelopmentvar2.ui.viewModel.AuthViewModel
 import com.example.mobileappdevelopmentvar2.ui.viewModel.ProductViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
 import java.net.InetSocketAddress
 import java.net.Proxy
 
@@ -27,7 +30,7 @@ object RetrofitClient {
 
     val retrofitClient = Retrofit.Builder()
         .baseUrl("https://dummyjson.com/")
-        .client(okHttpClient)
+//        .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
     val recipesApiService: RecipesApiService by lazy {
@@ -52,5 +55,10 @@ object RetrofitClient {
     val productViewModel: ProductsApiService by lazy {
         retrofitClient
             .create(ProductsApiService::class.java)
+    }
+
+    val authViewModel: AuthApiService by lazy {
+        retrofitClient
+            .create(AuthApiService::class.java)
     }
 }

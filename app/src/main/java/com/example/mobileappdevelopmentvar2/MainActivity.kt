@@ -14,8 +14,10 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.mobileappdevelopmentvar2.data.model.auth.Auth
 import com.example.mobileappdevelopmentvar2.ui.features.screenHome.ScreenHome
 import com.example.mobileappdevelopmentvar2.ui.theme.MobileAppDevelopmentVar2Theme
+import com.example.mobileappdevelopmentvar2.ui.viewModel.AuthViewModel
 import com.example.mobileappdevelopmentvar2.ui.viewModel.ProductViewModel
 
 class MainActivity : ComponentActivity() {
@@ -73,6 +75,12 @@ class MainActivity : ComponentActivity() {
                         }
                     )
                 }
+                val authViewModel: AuthViewModel = viewModel()
+                val lodinUser = Auth(
+                    username = "jamesd",
+                    password = "jamesdpass"
+                )
+                authViewModel.login(lodinUser)
             }
         }
     }
