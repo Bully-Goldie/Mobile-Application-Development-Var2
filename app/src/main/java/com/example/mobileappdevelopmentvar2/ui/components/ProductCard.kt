@@ -3,6 +3,7 @@ package com.example.mobileappdevelopmentvar2.ui.components
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.height
@@ -23,13 +24,14 @@ import com.example.mobileappdevelopmentvar2.ui.theme.nameProductColor
 import com.example.mobileappdevelopmentvar2.ui.theme.priceProductColor
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.ui.tooling.preview.Preview
 import com.example.mobileappdevelopmentvar2.data.model.product.Product
 
 
 @Composable
 fun ProductCard(
     modifier: Modifier = Modifier,
-    clickBasket: () -> Unit,
+    clickBasket: (Int) -> Unit,
     product: Product
 ) {
     Box(
@@ -56,12 +58,13 @@ fun ProductCard(
                     .size(30.dp, 30.dp)
                     .align(Alignment.BottomEnd)
                     .padding(bottom = 5.dp, end = 5.dp)
-                    .clickable{clickBasket}
+                    .clickable { clickBasket(product.id) }
 
             )
         }
 
         Column(
+            verticalArrangement = Arrangement.spacedBy(5.dp),
             modifier = Modifier
                 .align(Alignment.BottomStart)
                 .fillMaxWidth()
@@ -88,4 +91,15 @@ fun ProductCard(
             )
         }
     }
+}
+
+@Preview
+@Composable
+private fun PrevProductCard() {
+    val products = Product(
+        id = 1,
+        title = "title",
+        price = 12.00
+    )
+    ProductCard(clickBasket = {}, product = products)
 }

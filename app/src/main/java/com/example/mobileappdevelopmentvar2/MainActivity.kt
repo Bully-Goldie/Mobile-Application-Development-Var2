@@ -1,6 +1,7 @@
 package com.example.mobileappdevelopmentvar2
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -13,16 +14,9 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.mobileappdevelopmentvar2.data.model.post.Post
-import com.example.mobileappdevelopmentvar2.data.model.user.User
-import com.example.mobileappdevelopmentvar2.data.model.user.UserHair
-import com.example.mobileappdevelopmentvar2.ui.features.home.ScreenHome
+import com.example.mobileappdevelopmentvar2.ui.features.screenHome.ScreenHome
 import com.example.mobileappdevelopmentvar2.ui.theme.MobileAppDevelopmentVar2Theme
-import com.example.mobileappdevelopmentvar2.ui.viewModel.PostViewModel
 import com.example.mobileappdevelopmentvar2.ui.viewModel.ProductViewModel
-import com.example.mobileappdevelopmentvar2.ui.viewModel.RecipeViewModel
-import com.example.mobileappdevelopmentvar2.ui.viewModel.TodoViewModel
-import com.example.mobileappdevelopmentvar2.ui.viewModel.UserViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -73,7 +67,10 @@ class MainActivity : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     ScreenHome(
                         modifier = Modifier.padding(innerPadding),
-                        products = productViewModel.productsState
+                        products = productViewModel.productsState,
+                        clickBasket = {id ->
+                            Log.d("click","click ${id}")
+                        }
                     )
                 }
             }
